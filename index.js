@@ -3,11 +3,24 @@ const app = express();
 const port = 8080;
 const mongoose = require('mongoose');
 const path = require('path');
+const Chat = require('./models/chat.js');
 
 
 app.set("views",path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+
+
+let chat1 = new Chat({
+    from: "Neha",
+    to: "Priya",
+    msg: "hello",
+    create_at: new Date()
+});
+
+chat1.save().then((res) => {
+    console.log(res);
+});
 
 main().then(() => {
     console.log("Connected to MongoDB")
@@ -22,7 +35,6 @@ async function main() {
 app.get("/", (req, res) => {
     res.send(" root is working");
 });
-
 
 app.listen(port, () => {
     console.log("Server is running on port " + port);
