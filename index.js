@@ -90,7 +90,16 @@ app.put("/chats/:id", async (req,res) => {
     );
     console.log(updatedChat);
     res.redirect("/chats");
+});
 
+
+//Delete Route
+
+app.delete("/chats/:id", async (req,res) => {
+    let {id} = req.params;
+    let deleteChat = await Chat.findByIdAndDelete(id);
+    console.log(deleteChat);
+    res.redirect("/chats");
 });
 app.listen(port, () => {
     console.log("Server is running on port " + port);
