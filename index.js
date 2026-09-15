@@ -45,6 +45,11 @@ app.get("/chats/new", (req, res) => {
     res.render("new.ejs");
 });
 
+//create route
+app.post("/chats", (req, res) => {
+    res.send("create route is working");
+})
+
 app.get("/", (req, res) => {
     res.send(" root is working");
 });
