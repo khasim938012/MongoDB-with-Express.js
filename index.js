@@ -32,6 +32,12 @@ async function main() {
 
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
+
+app.get("/chats", async (req, res) => {
+   let chats = await Chat.find();
+   console.log(chats);
+   res.render("index.ejs", { chats: chats });
+});
 app.get("/", (req, res) => {
     res.send(" root is working");
 });
